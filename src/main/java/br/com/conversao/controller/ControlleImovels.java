@@ -22,16 +22,28 @@ public class ControlleImovels {
 	
 	
 	
-	@GetMapping("/leitura")
+	@GetMapping("/leituraUm")
 	 public ResponseEntity<?> exibe(){
 		 try {
 			 ImovelCertidao ic = ImovelCertidaoRead.ler();
 		return ResponseEntity.status(200).body(ic);
 		 }catch(Exception ex) {
 			 ex.printStackTrace();
-	   return ResponseEntity.status(200).body("error" + ex.getMessage());
+	   return ResponseEntity.status(500).body("error" + ex.getMessage());
 		 }
 	 }
+	
 
+	@GetMapping("/leituraDois")
+	 public ResponseEntity<?> exibe2(){
+		 try {
+			 ImovelCertidao ic = ImovelCertidaoRead.ler2();
+			 
+		return ResponseEntity.status(200).body(ic);
+		 }catch(Exception ex) {
+			 ex.printStackTrace();
+	   return ResponseEntity.status(500).body("error" + ex.getMessage());
+		 }
+	 }
 	
 }
