@@ -52,6 +52,18 @@ public class ControleImoveis {
 		 }
 	 }
 	
+	@GetMapping("/leituraFazendaRioGrandeum")
+	 public ResponseEntity<?> exibe3(){
+		 try {
+			 ImovelCertidao ic =  ImovelCertidaoJson.ler0500260040001001pontgrossaparana();
+			 lista.add(ic);
+		return ResponseEntity.status(200).body(lista);
+		 }catch(Exception ex) {
+			 ex.printStackTrace();
+	   return ResponseEntity.status(500).body("error" + ex.getMessage());
+		 }
+	 }
+	
 	@PostMapping("/saveAll")
 	 public ResponseEntity<?> save(@RequestBody ImovelCertidao[] imovelCertidoes){
 		 try {

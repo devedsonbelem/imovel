@@ -309,7 +309,7 @@ public class ImovelCertidaoRead {
 				  
 			   }
 			   if (i==51) {
-				   ic.setIdentificacaoImovelSituacao(pedacos[2].replaceAll("null", ""));
+				   ic.setIdentificacaoImovelSituacaoFinal(pedacos[2].replaceAll("null", ""));
 			   }
 			   ic.setDirectory("ponta_grossa_pr/27251/");
 			    ic.setIdentificacaoImovelLinqRequerente("www.tributos.pontagrossa.pr.gov.br");
@@ -621,7 +621,7 @@ public class ImovelCertidaoRead {
 			  
 		   }
 		   if (i==51) {
-			   ic.setIdentificacaoImovelSituacao(pedacos[2].replaceAll("null", ""));
+			   ic.setIdentificacaoImovelSituacaoFinal(pedacos[2].replaceAll("null", ""));
 		   }
 		   ic.setDirectory("ponta_grossa_pr/27251/");
 		    ic.setIdentificacaoImovelLinqRequerente("www.tributos.pontagrossa.pr.gov.br");

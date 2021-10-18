@@ -1,5 +1,7 @@
 package br.com.conversao.entity;
 
+import java.text.SimpleDateFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,6 +10,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
  
@@ -30,6 +33,14 @@ public class ImovelCertidao {
 	private String certidaoNumero;
 	@Column
 	private String titulo;
+	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonProperty("data_emissao")
+	@Column(name="data_emissao")
+	private java.util.Date dataEmissao;
+	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonProperty("data_validade")
+	@Column(name="data_validade")
+	private java.util.Date dataValidade;
 	@JsonProperty("codigo_autencidade")
 	@Column(name="codigo_autencidade")
 	private String codigoAutencidade;
@@ -96,44 +107,61 @@ public class ImovelCertidao {
 	@JsonProperty("linq_requerente")
 	@Column(name="linq_requerente")
 	private String identificacaoImovelLinqRequerente;
-	@JsonProperty("imovel_situacao")
-	@Column(name="imovel_situacao")
-	private String identificacaoImovelSituacao;
 	@JsonProperty("imovel_situacao_final")
-	@Column(name="imovel_situacao_finaç")
+	@Column(name="imovel_situacao_final")
 	@Lob
 	@Type(type = "org.hibernate.type.TextType")
 	private String identificacaoImovelSituacaoFinal;
+	@JsonProperty("imovel_quadra")
+	@Column(name="imovel_quadra")
+	private String identificacaoImovelQuadra;
+	@JsonProperty("imovel_matricula")
+	@Column(name="imovel_matricula")
+	private String identificacaoImovelMatricula;
 
+	
 	public ImovelCertidao() {
 	}
 
+ 
+       
+ 
+
+
 	@Override
 	public String toString() {
-		return "ImovelCertidao [id=" + id + ", directory=" + directory + ", file_name=" + fileName
-				+ ", certidaoNumero=" + certidaoNumero + ", titulo=" + titulo + ", codigoAutencidade="
-				+ codigoAutencidade + ", identificacaoContribuinteCGCM=" + identificacaoContribuinteCGCM
-				+ ", identificacaoContribuintecnpjCpf=" + identificacaoContribuintecnpjCpf
-				+ ", identificacaoContribuinteCadastroInscricao=" + identificacaoContribuinteCadastroInscricao
-				+ ", identificacaoContribuinteNome=" + identificacaoContribuinteNome
-				+ ", identificacaoContribuinteEndereco=" + identificacaoContribuinteEndereco
-				+ ", identificacaoContribuinteBairro=" + identificacaoContribuinteBairro
-				+ ", indetificacaoContribuinteComplemento=" + indetificacaoContribuinteComplemento
-				+ ", identificacaoContribuinteMunicipio=" + identificacaoContribuinteMunicipio
-				+ ", identificacaoContribuinteUF=" + identificacaoContribuinteUF + ", identificacaoContribuinteCep="
-				+ identificacaoContribuinteCep + ", identificacaoRequerenteNome=" + identificacaoRequerenteNome
-				+ ", identificacaoRequerenteFinalidade=" + identificacaoRequerenteFinalidade
-				+ ", identificacaoRequerenteProtocolo=" + identificacaoRequerenteProtocolo
-				+ ", identificacaoImovelCadastro=" + identificacaoImovelCadastro + ", identificacaoImovelrefCadastral="
-				+ identificacaoImovelrefCadastral + ", identificacaoImovelrefLogradouroNumero="
-				+ identificacaoImovelrefLogradouroNumero + ", identificacaoImovelBairro=" + identificacaoImovelBairro
-				+ ", identificacaoImovelComplemento=" + identificacaoImovelComplemento
-				+ ", identificacaoImovelTipoImovel=" + identificacaoImovelTipoImovel
+		SimpleDateFormat sdf =new SimpleDateFormat("dd/MM/yyyy");
+		return "ImovelCertidao [id=" + id + ", directory=" + directory + ", fileName=" + fileName + 
+				", certidaoNumero="
+				+ certidaoNumero + ", titulo=" + titulo + ", dataEmissao=" + sdf.format(dataEmissao) + ", dataValidade="
+				+ sdf.format(dataValidade) + ", codigoAutencidade=" + codigoAutencidade + ", identificacaoContribuinteCGCM="
+				+ identificacaoContribuinteCGCM + ", identificacaoContribuintecnpjCpf="
+				+ identificacaoContribuintecnpjCpf + ", identificacaoContribuinteCadastroInscricao="
+				+ identificacaoContribuinteCadastroInscricao + ", identificacaoContribuinteNome="
+				+ identificacaoContribuinteNome + ", identificacaoContribuinteEndereco="
+				+ identificacaoContribuinteEndereco + ", identificacaoContribuinteBairro="
+				+ identificacaoContribuinteBairro + ", indetificacaoContribuinteComplemento="
+				+ indetificacaoContribuinteComplemento + ", identificacaoContribuinteMunicipio="
+				+ identificacaoContribuinteMunicipio + ", identificacaoContribuinteUF=" + identificacaoContribuinteUF
+				+ ", identificacaoContribuinteCep=" + identificacaoContribuinteCep + ", identificacaoRequerenteNome="
+				+ identificacaoRequerenteNome + ", identificacaoRequerenteFinalidade="
+				+ identificacaoRequerenteFinalidade + ", identificacaoRequerenteProtocolo="
+				+ identificacaoRequerenteProtocolo + ", identificacaoImovelCadastro=" + identificacaoImovelCadastro
+				+ ", identificacaoImovelrefCadastral=" + identificacaoImovelrefCadastral
+				+ ", identificacaoImovelrefLogradouroNumero=" + identificacaoImovelrefLogradouroNumero
+				+ ", identificacaoImovelBairro=" + identificacaoImovelBairro + ", identificacaoImovelComplemento="
+				+ identificacaoImovelComplemento + ", identificacaoImovelTipoImovel=" + identificacaoImovelTipoImovel
 				+ ", identificacaoImovelcomplementoLote=" + identificacaoImovelcomplementoLote
 				+ ", identificacaoImovelLinqRequerente=" + identificacaoImovelLinqRequerente
-				+ ", identificacaoImovelSituacao=" + identificacaoImovelSituacao + ", identificacaoImovelSituacaoFinal="
-				+ identificacaoImovelSituacaoFinal + "]";
+				+ ", identificacaoImovelSituacaoFinal="
+				+ identificacaoImovelSituacaoFinal + ", identificacaoImovelQuadra=" + identificacaoImovelQuadra
+				+ ", identificacaoImovelMatricula=" + identificacaoImovelMatricula + "]";
 	}
+
+
+
+
+
 
 	public String getId() {
 		return id;
@@ -203,7 +231,9 @@ public class ImovelCertidao {
 	public String getIdentificacaoContribuinteCadastroInscricao() {
 		return identificacaoContribuinteCadastroInscricao;
 	}
-
+  
+	
+	
 	public void setIdentificacaoContribuinteCadastroInscricao(String identificacaoContribuinteCadastroInscricao) {
 		this.identificacaoContribuinteCadastroInscricao = identificacaoContribuinteCadastroInscricao;
 	}
@@ -352,13 +382,7 @@ public class ImovelCertidao {
 		this.identificacaoImovelLinqRequerente = identificacaoImovelLinqRequerente;
 	}
 
-	public String getIdentificacaoImovelSituacao() {
-		return identificacaoImovelSituacao;
-	}
-
-	public void setIdentificacaoImovelSituacao(String identificacaoImovelSituacao) {
-		this.identificacaoImovelSituacao = identificacaoImovelSituacao;
-	}
+ 
 
 	public String getIdentificacaoImovelSituacaoFinal() {
 		return identificacaoImovelSituacaoFinal;
@@ -368,4 +392,49 @@ public class ImovelCertidao {
 		this.identificacaoImovelSituacaoFinal = identificacaoImovelSituacaoFinal;
 	}
 
+	public java.util.Date getDataEmissao() {
+		return dataEmissao;
+	}
+
+	public void setDataEmissao(java.util.Date dataEmissao) {
+		this.dataEmissao = dataEmissao;
+	}
+
+	public java.util.Date getDataValidade() {
+		return dataValidade;
+	}
+
+	public void setDataValidade(java.util.Date dataValidade) {
+		this.dataValidade = dataValidade;
+	}
+
+
+
+	public String getIdentificacaoImovelQuadra() {
+		return identificacaoImovelQuadra;
+	}
+
+
+
+	public void setIdentificacaoImovelQuadra(String identificacaoImovelQuadra) {
+		this.identificacaoImovelQuadra = identificacaoImovelQuadra;
+	}
+
+
+
+	public String getIdentificacaoImovelMatricula() {
+		return identificacaoImovelMatricula;
+	}
+
+
+
+	public void setIdentificacaoImovelMatricula(String identificacaoImovelMatricula) {
+		this.identificacaoImovelMatricula = identificacaoImovelMatricula;
+	}
+
+
+  
+
+	
+	
 }
