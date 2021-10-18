@@ -17,7 +17,7 @@ public class ImovelCertidaoRead {
 			String pedacos[]=new String[20];
 			String linha[]=new String[6];
 		      ImovelCertidao ic = new ImovelCertidao();
-		      ic.setId(1l);
+		      ic.setId("PRPG27251");
 		      
 			while ((s = bf.readLine()) != null) {
 			
@@ -313,7 +313,7 @@ public class ImovelCertidaoRead {
 			   }
 			   ic.setDirectory("ponta_grossa_pr/27251/");
 			    ic.setIdentificacaoImovelLinqRequerente("www.tributos.pontagrossa.pr.gov.br");
-			    ic.setFile_name("2021_10_14_12_43_49.pdf");
+			    ic.setFileName("2021_10_14_12_43_49.pdf");
 			   }
 			   
 			 bf.close();
@@ -329,7 +329,7 @@ public class ImovelCertidaoRead {
 		String pedacos[]=new String[20];
 		String linha[]=new String[6];
 	      ImovelCertidao ic = new ImovelCertidao();
-	      ic.setId(2l);
+	      ic.setId("PRPG88006");
 	      
 		while ((s = bf.readLine()) != null) {
 		
@@ -625,7 +625,7 @@ public class ImovelCertidaoRead {
 		   }
 		   ic.setDirectory("ponta_grossa_pr/27251/");
 		    ic.setIdentificacaoImovelLinqRequerente("www.tributos.pontagrossa.pr.gov.br");
-		    ic.setFile_name("880062.pdf");
+		    ic.setFileName("880062.pdf");
 		   }
 		   
 		 bf.close();
